@@ -1,0 +1,3 @@
+#!/bin/sh
+hugo
+cd public && rsync -az . /var/www/htdocs/fat-dragon.org

@@ -1,0 +1,5 @@
+baseURL = "http://fat-dragon.org/"
+languageCode = "en-us"
+title = "The Fat Dragon"
+theme = "base16"
+pygmentsuseclasses = true

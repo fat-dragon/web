@@ -4,67 +4,74 @@ date: 2018-11-28T16:26:31Z
 ---
 
 So we're on to building prototypes.  To recap, we're using an x86_64
-host running OpenBSD as our target environment; having selected this
-as our system of choice, we provided a solution for self-service
-account creation.  Now we need to think about a coherent
-user-interface to tie things together; the Unix shell is powerful,
-and you can have access to it if you'd like, but lots of users
-aren't going to like it.  Also, we want to tie disparate parts of
-the system together under a single interface; so let's think about
-menus and messaging.
+host running OpenBSD as our target environment.  Having selected
+this as our system of choice, we provided a solution for
+self-service account creation.  Now we need to think about a
+coherent user-interface to tie things together.  While the Unix
+shell is powerful, and you can have access to it if you'd like, lots
+of users aren't going to like it.  Also, we want to tie disparate
+parts of the system together under a single interface, so let's
+think about menus and messaging.
 
-But first, what programming language should we use?  We have a lot
-of choice in this area.
+But first, what programming language should we use?
 
-Recall that Christensen's mock-up of CBBS was written in BASIC, but
-the real program was written in 8080 assembly language.
-Traditionally, BBS programs were written in what was usefully
-available: the most common choices by the dawn of the DOS BBS era
-were Pascal, BASIC and C; the most sophisticated programmers
-undoubtedly included some assembler.  At least
+We have a lot of choice in this area.
+
+Recall that Christensen's mock-up of CBBS (what we would now call a
+prototype) was written in BASIC, but the real program was written in
+8080 assembly language.  Traditionally, BBS programs were written in
+what was usefully available: the most common choices by the dawn of
+the DOS BBS era were Pascal, BASIC and C; the most sophisticated
+programmers undoubtedly included some assembler.  At least
 [one BBS program](https://www.digiater.nl/openvms/decus/vax89a3/ualr/bbs/)
 for the VMS operating system on the VAX was written in VAX FORTRAN
 and VMS DCL.
 
-Now, of course, we have a much wider selection to choose from. We
+Now, of course, we have a much wider selection to choose from.  We
 can use one of those traditional languages; environments for Pascal,
 C, BASIC and even FORTRAN are available for OpenBSD/amd64; if we
-were masochistic we could even use assembly.  But none of those
-appeal; they all feel repetitive and programming in many of them is
-simply tedious.  Manual memory management is annoying.
+were masochistic we could even use assembly language.  But none of
+those are appealing: they all feel repetitive and programming in
+many of them is simply tedious.  Manual memory management is
+annoying.
 
-Believe it or not, the `newuser` program is written in Perl (with
-some bits in C), but Perl is declining in popularity and isn't the
-most comfortable language to begin with.
+Believe it or not, the `newuser` program for account creation is
+written in Perl (with some bits in C), but Perl is declining in
+popularity and isn't the most comfortable language to begin with.  I
+don't think we'll write a lot more perl code, at least not for
+interacting with users.  We may even rewrite `newuser` in something
+else eventually.
 
 Contemporary BBS development efforts seem to have shifted to other
 languages.  Pascal and C are both still popular, but so are C++, C#,
 Python, and even JavaScript (with Node.js).  Ruby and Crystal have
-even made some appearances.
+made appearances.
 
 But again, none of those really appeal; Crystal is the most
 personally attractive (statically typed and compiled Ruby? Yay!),
-but (and this might sound silly), it feels a bit too snazzy for the
+but (and this might sound silly) it feels a bit too snazzy for the
 application domain.
 
 We'd like a language that's a little obscure and funky, because
-that's fun to play around with and we're doing this for fun.  I want
-something that's not _too_ high-level, but that still provides
+that's fun to play around with and we're doing this for _fun_.  I
+want something that's not _too_ high-level, but that still provides
 higher-level abstractions than C or Pascal; something where we feel
 reasonably close to the underlying system but without the tedium of
 manual memory management or implementing trivial data structures by
 hand.  Something that's common enough that it's not totally foreign
 and will be decently supported.
 
-Let's select something that doesn't require an enormous runtime, so
-JVM languages are out.  I personally like compiled languages with
-strong typing, so that rules out dynamic languages like Ruby, Lua,
-Python, etc.
+Let's also select something that doesn't require an enormous
+runtime, so JVM languages are out.  I personally like compiled
+languages with strong static typing, so that rules out dynamic
+languages like Ruby, Lua, Python, etc, and sadly, most of the Lisp
+family.  We'll exclude optionally typed languages like Julia, too.
 
 We're also going to rule out more academically focused languages
 like Haskell and Prolog off the bat.  Either of these would serve,
 but they're going to be simply inaccessible to the bulk of BBS
-users.
+users.  Similarly with the F*'s and idris's of the world.  No J, APL
+etc: I'd like to be able to read my own code.
 
 Some amount of functional programming support would be nice.
 
@@ -91,10 +98,27 @@ documents are available for those who'd like to know more.
 Standard ML was an attempt in the research community to define a
 commmon language for collaborative work.  However, it turned out
 that the language had general purpose appeal; it is used in academic
-and production environments.  It comes with a robust "Basis Library"
-that provides much functionality for working with the underlying
-system.  It is statically and strongly typed, and optimizing
-compilers exist.
+and production environments.
+
+SML comes with a robust "Basis Library" that provides much
+functionality for working with the underlying system.  Lots of great
+documentation exists, both online and in books.  It supports
+programming in the large through a module system.  It is not purely
+functional, so we can easily do things like IO without resorting to
+[category theoretical contortions](https://blog.plover.com/prog/burritos.html)
+and we can use an imperative subset if we really need to.  It
+features strict function argument evaluation, so it's relatively
+straight forward to reason about performance and behavior.  Memory
+is managed by the runtime and it is garbage collected; strings and
+lists are first-class types, and the basis library provides a number
+of useful data structures such as trees, hash tables, etc.  It
+supports algebraic datatypes and higher order functions, and it is
+strongly, statically typed, but uses type inference to get rid of
+most of the associated boilerplate.  Destructing and pattern
+matching can be used throughout.  It has formally defined semantics.
+No memory leaks, no core dumps and it is pleasantly expressive;
+what's not to like?  Finally, we get fast native code execution from
+high-quality optimizing compilers that are freely available.
 
 But not in the OpenBSD ports collection.
 
@@ -114,34 +138,35 @@ to work with:
 * We can (re)port SML/NJ, but the generated code apparently
   won't play well with some of OpenBSD's security requirements.
   In particular, it sometimes wants to execute code from
-  writable virtual memory pages.  We can fix that, but it
-  sounds tedious, and it's a big program.
+  writable pages.  We can fix that, but it sounds tedious, and
+  SML/NJ is a big program.  We want to get to work faster.
 * We can port Poly/ML, which is a popular implementation, but
   that looks like a superset of basic SML functionality.
 * We can port Moscow ML (mosml), which compiles to bytecode
   and comes with an interpreter, but it doesn't appear to
   support all of the basis library, and it doesn't compile
-  to native-code.
+  to native code.
 * We can look at MLton, which is a whole-program optimizing
   compiler.  It has some support for OpenBSD already, and can
   compile to native machine code.  The runtime is written in
-  C, while the rest of the system itself (including the
-  compiler) is written in SML itself.
+  C, while the rest of the system (including the compiler) is
+  written in SML itself.
 
 MLton looks the most promising, but we need a way to compile the
-compiler.  As it turns out, however, they support cross-compilation
-to C.  Ah, here we go: I can bootstrap a compiler for OpenBSD from
-another machine, in this case, a server running FreeBSD that
+compiler.  But as it turns out they support cross-compilation to C;
+that is, we compile the SML sources to C code targetted to another
+platform. Ah, here we go: I can bootstrap a compiler for OpenBSD
+from another machine, in this case, a server running FreeBSD that
 supports SML/NJ, where I can build a native version of MLton that I
 can then use to generate C code from the compiler's SML sources that
 I can compile on OpenBSD.  We will cross-compile the compiler to C
-from our working FreeBSD machine, then transfer that to the Fat
-Dragon where we will build a native SML compiler.  We will then use
-_that_ to recompile the SML compiler natively, and finally use that
-second stage compiler to build a third stage compiler that we will
-install.
+from our working FreeBSD machine, then transfer the result to the
+Fat Dragon where we will build a native SML compiler.  We will then
+use _that_ to recompile the SML compiler natively, and finally use
+that second stage compiler to build a third stage compiler that we
+will install.  Easy.
 
-Initial generation of C is successful, we can compile the C code
+Initial generation of C is successful and we can compile the C code
 into an executable, but the resulting compiler binary crashes.
 Attempts to get a stack back trace from `gdb` (the system debugger)
 yield gibberish; what is going on?  The system message buffer

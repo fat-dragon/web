@@ -3,3 +3,6 @@ languageCode = "en-us"
 title = "The Fat Dragon"
 theme = "base16"
 pygmentsuseclasses = true
+
+[blackfriday]
+fractions = false

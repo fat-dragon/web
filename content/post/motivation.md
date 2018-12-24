@@ -187,7 +187,7 @@ were simply too constrained.
 
 Fast-forward five or so years and a suitably powerful IBM PC capable
 of running Unix would be on the market, but by then the die had been
-cast.  For better of for worse, Christensen and Suess did not just
+cast.  For better or for worse, Christensen and Suess did not just
 build the _first_ recognizable BBS, they also created the archetype
 for all BBSes to follow.  Thus, the initial years were marked by
 similarly primitive systems, which carried forward the same basic

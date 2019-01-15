@@ -8,20 +8,22 @@ read it with an open mind.  It is not exactly complimentary, but it
 is not intended as a slight.
 
 About twelve years ago, I read the
-"[Voices in My Head](http://textfiles.com/bbs/MINDVOX/voices.txt)"
-eassay about the birth of MindVox by
+["Voices in My Head"](http://textfiles.com/bbs/MINDVOX/voices.txt)
+essay about the birth of
+[MindVox](https://en.wikipedia.org/wiki/MindVox) by
 [Patrick "Lord Digital" Kroupa](https://en.wikipedia.org/wiki/Patrick_K._Kroupa).
 I revisited it recently and, as before, found it interesting in
 giving some insight into life on the "digital frontier" of the early
-BBS community.  Kroupa laments the homogenization that came with the
-settlement of that frontier and his essay explains the motivation
-for a rebirth of a kind with the creation of MindVox.  He writes
-well and draws the reader in, but he only gives a glimpse of a world
-one is difficult to imagine if you weren't there and then, like a
-magician, pulls his cloak tight and hides it from sight, as if to
-say, "no; you're not one of the chosen few.  You aren't ready yet."
-This had to be deliberate; a way of generating that most powerful of
-marketing drugs: hype.
+BBS community.  However the bulk of the essay is Kroupa lamenting
+the homogenization that came with the settlement of that frontier,
+which turns into explaining the motivation for a kind of rebirth
+with the creation of MindVox.  He writes well and draws the reader
+in, but he only gives a _glimpse_ of a world that is difficult to
+imagine if you weren't there at the time and then, like a magician,
+he pulls his cloak tight and hides it from sight, as if to say, "no;
+you're not one of the chosen few."  This had to be deliberate, of
+course; a way of generating that most powerful of marketing drugs:
+hype.  After all, he was starting a business.
 
 I'll give him props for showmanship.
 
@@ -33,7 +35,7 @@ being done in the research community at the time the BBS community
 was forming.
 
 Reading between the lines, and having seen something of the desert
-he describes of cookie-cutter track homes that replaced the frontier
+of cookie-cutter track homes he describes that replaced the frontier
 settlements, something else grabs my attention: he's right.
 
 But before I get to that, let me mention an annoyance: a thing I
@@ -50,7 +52,7 @@ a group of posturing amateurs who managed to gain facility with the
 facade of a technology few had been exposed to but that they didn't
 really understand, and who similarly adopted the facade of the
 pseudo-academic techniques used to present and justify the resulting
-tale.  Unfortunately, this is just auto-hageography; bad academics.
+tale.  Unfortunately, this is just auto-hagiography; bad academics.
 
 And yet, I find myself longing for that distant past.  Why?  One
 word:
@@ -63,8 +65,8 @@ eventually realizes that nostalgia is a desire to reconnect with a
 time and a place and people that no longer exist: the time has
 passed, and the place has moved on as a result.  The people you
 remember are usually no longer there, and if they are, well, you
-usually find out that you've changed and they haven't (or vice
-versa) and if they haven't, then there's a reason you stopped
+generally find out that you've changed and they haven't (or vice
+versa) and if they haven't, then there was a reason you stopped
 hanging around with them in the first place.  In any event the thing
 you were nostalgic for is just no longer what you rosily remember.
 The events have faded in your mind, the jagged edges of the

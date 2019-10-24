@@ -169,7 +169,7 @@ quoted Dennis Ritchie saying the following:
 >experience that the essence of communal computing, as
 >supplied by remote-access, time-shared machines, is
 >not just to type programs into a terminal instead of
->a keypunch, but to encourage close communication."
+>a keypunch, but to encourage close communication.
 
 (From http://cm.bell-labs.co/who/dmr/hist.html)
 

@@ -24,8 +24,8 @@ allocated it for calling into the catalog system at the university's
 main library.  Ostensibly to assist students with (high school
 level) research, a laminated sheet with printed instructions for
 dialing the modem into the university's terminal server and
-connecting to the card catalog system was taped to the wall next to
-the aging machine.
+connecting to the library system was taped to the wall next to the
+aging machine.
 
 With only its dual 5.25" floppy drives, 6502 processor, mere
 kilobytes of RAM and builtin keyboard bearing mute witness to the
@@ -101,10 +101,10 @@ too distracted to notice.
 These kids had a sophisticated means of conversing among themselves
 in a social space that was totally outside of my previous experience
 in every way.  While I had been noisily rolling down the street,
-they had been busy indoors harnessing technology to completely
-sidestep the physical world, creating their own reality instead.  I
-had never stopped to consider what these people did when they got
-home in the afternoons, but they had forged their own reality.
+they had been busy indoors harnessing technology to sidestep my
+lived physical world, creating their own reality instead.  I had
+never stopped to consider what these people did when they got home
+in the afternoons, but they had forged their own reality.
 Discovering this was a revelatory experience and I became interested
 in exploring these mysterious digital caverns.
 

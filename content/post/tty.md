@@ -23,56 +23,57 @@ let's talk about I/O.
 
 A computer system consists of several parts.  The "brain" of the
 machine is the central processing unit: this is the unit that
-actually performs computation; it has an arithmetical logic unit
-(ALU) for doing arithmetic and some amount of supporting circuitry.
-Generally what it does is take instructions from memory (more on
-that in a moment) and act on them.  Instructions, in turn, are small
-bits of data that represent commands to the CPU: "Add 1 to the
+actually performs computation; it has an arithmetic logic unit (ALU)
+for doing arithmetic and some amount of supporting circuitry.  It
+also has an interface to memory and the rest of the system.
+Generally what the CPU does is take instructions from memory (more
+on that in a moment) and act on them.  Instructions, in turn, are
+small bits of data that represent commands to the CPU: "Add 1 to the
 number stored in register 0"; "test where the contents of register 0
 are greater than 10 and set a status bit"; "move the contents of
-register 2 to local 10011100 00110100 in main memory"; etc.
+register 2 to location 10011100 00110100 in main memory"; etc.
 Instructions are encoded into a small number of bytes or words and
-these are what the CPU actually deals in: the CPU fetches them,
+these are what the CPU actually deals with: the CPU fetches them,
 decodes them, executes them, and stores the results.
 
 As programmers, we tend to write code in high-level languages (such
 as SML, or C, Go, Rust, Pascal, Python, Lisp, JavaScript, etc) and
 use either interpreters or compilers to take the symbolic, textual
-representation of our programs and distill them down to instructions
+representation of those programs and translate them to instructions
 that can actually be executed by the computer.
 
 Implicit in this is that the computer must also have some amount of
 memory to hold interesting data and instructions.  We often refer to
 this as "main" memory.  Circuitry is provided to connect the CPU to
-this memory store.  Main memory can be directly addressed by the CPU
+this memory store, main memory can be directly addressed by the CPU
 and falls into two categories: either "random access memory", or
 RAM, which tends to be readable _and_ writable, or "read-only
 memory" or ROM, which as it's name implies is readable but not
 writable.  Special instructions exist for copying data between the
-CPU and main memory; note that the CPU itself often has a small
-number of word-sized memory locations called _registers_ that it can
-use to hold data it is working on.  A typical computational sequence
-might involve an instruction to move data from main memory into a
-register, a sequence of instructions to manipulate that data in some
-manner, and another instruction to copy the result from the register
-back into main memory, possibly overwriting the original data.  Some
-computers feature instructions that can manipulate data directly in
-memory, while others require copying it into a register first.  Note
-that memory exists in some address space, and most modern machines
-provide two address spaces: a _physical_ address space that deals
-with memory as it is placed in the computer by the hardware
-engineers, and a _virtual_ address space, which puts a layer of
-indirection between a program's view of memory and the physical
-memory in the machine.  Note that this is what "virtual memory"
-means; it does not necessarily mean handling overruns of the
-physical memory store by paging or swapping bits of a program's
-executing image to disk.  A dedicated piece of hardware call a
-"memory management unit" or MMU is responsible for translating from
-the virtual to the physical address spaces.
+CPU and main memory; the CPU itself usually has a small number of
+word-sized memory locations called _registers_ that it can use to
+hold data it is working on.  A typical computational sequence might
+involve an instruction to move data from main memory into a
+register, a sequence of instructions to manipulate that data, and
+another instruction to copy the result from the register back into
+main memory, possibly overwriting the original data.  Some computers
+feature instructions that can manipulate data directly in memory,
+while others require copying it into a register first.  Memory
+exists in some address space, and most modern machines provide two
+address spaces: a _physical_ address space that deals with memory as
+it is placed in the computer by the hardware engineers, and a
+_virtual_ address space, which puts a layer of indirection between a
+program's view of memory and the physical memory in the machine.
+Note that this is what "virtual memory" means; it does not
+necessarily mean handling overruns of the physical memory store by
+paging or swapping bits of a program's executing image to disk.  A
+dedicated piece of hardware call a "memory management unit" or MMU
+is responsible for translating from the virtual to the physical
+address spaces.
 
 But by themselves, a CPU and memory aren't particularly interesting;
 sure, you can compute with them...but what do you do with the
-results?  How do you get access to interesting data to perform
+results?  And how do you get access to interesting data to perform
 computations on?
 
 Enter the concept of input and output; we want to connect our CPU

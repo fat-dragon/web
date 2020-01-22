@@ -114,7 +114,7 @@ lists are first-class types, and the basis library provides a number
 of useful data structures such as trees, hash tables, etc.  It
 supports algebraic datatypes and higher order functions, and it is
 strongly, statically typed, but uses type inference to get rid of
-most of the associated boilerplate.  Destructing and pattern
+most of the associated boilerplate.  Destructuring and pattern
 matching can be used throughout.  It has formally defined semantics.
 No memory leaks, no core dumps and it is pleasantly expressive;
 what's not to like?  Finally, we get fast native code execution from

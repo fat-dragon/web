@@ -72,15 +72,15 @@ of Ritchie and others in their group, mostly former Multicians.
 The result was a small operating system that Brian Kernighan
 jokingly referred to as "UNICS", a pun on "Multics" that was
 allegedly a portmanteau of "Uniplexed Information and Computing
-Service", but since it vaguely sounded like "eunuchs" also somewhat
-basely referred to as, "a castrated version of Multics": the times
-were not known for their enlightened sense of humor.
+Service", but since it vaguely sounded like "eunuchs" it was also
+somewhat basely referred to as, "a castrated version of Multics":
+the times were not known for their enlightened sense of humor.
 
 Much interesting work was done on this small machine, including the
 invention of a language called "B", which was a cut-down version of
 BCPL used as a systems language.  However, the PDP-7 was too
-constrained of an environment to do much interesting computer
-science on, but enough had been done that the nascent group could
+constrained of an environment to do all that much computer science
+on, but enough had been done that the nascent group could
 successfully lobby Bell Labs management to approve the installation
 of a DEC PDP-11/20 minicomputer for operating system research and
 development.  By this time marketing had caught wind of the work
